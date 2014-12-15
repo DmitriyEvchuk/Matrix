@@ -1,4 +1,4 @@
-import static ua.dima.Aprint.*;
+
 import java.util.*;
 
 public class Matrix{
