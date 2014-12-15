@@ -2,8 +2,8 @@
 import java.util.*;
 
 public class Matrix{
-public Integer [][]matrix1;
-public Integer [][]matrix2;
+protected Integer [][]matrix1;
+protected Integer [][]matrix2;
   	    
 	//if you need empty referense on matrix
 	public Matrix(){}	
@@ -98,7 +98,7 @@ public Integer [][]matrix2;
 class SumMatrix
 		{
 
-public Integer [][]rezMatrix;
+protected Integer [][]rezMatrix;
 
 private Integer [][]buffMatrix1;
 private Integer [][]buffMatrix2;
