@@ -2,8 +2,8 @@
 import java.util.*;
 
 public class Matrix{
-public Integer [][]matrix1;
-public Integer [][]matrix2;
+private Integer [][]matrix1;
+private Integer [][]matrix2;
   	    
 	//if you need empty referense on matrix
 	public Matrix(){}	
@@ -59,7 +59,60 @@ public Integer [][]matrix2;
 
 	}//constructor
 
-     public static void printMatrix (Integer [][] matrix){
+	//inizialization matrix for matrix1
+	protected void setMatrix(Integer [][] value){//for example setMatrix(new Integer[3][3]) 
+		matrix1=value;}
+
+	//set matrix1
+	protected Integer [][] setMatrix(){return matrix1;}  //????????????????????????????
+
+	//get matrix1
+	public Integer getMatrix(int i,int j){
+		
+		int value=matrix1[i][j];
+		return value;}
+	
+	
+	public Integer getRowsMatrixLength(){
+		
+		int length1=matrix1.length;	
+		return length1;	}
+
+	public Integer getColumnsMatrixLength(){
+
+		int length1=matrix1[0].length;	
+		return length1;	}
+
+
+	
+
+	//inizialization matrix for matrix2
+	 protected void setMatrix2(Integer [][] value){
+		matrix2=value;}
+
+	//set matrix2
+	 protected void setMatrix2(int i,int j,int value){    //????????????????????????????
+		matrix2[i][j]=value;}
+
+	//get matrix2
+	public Integer getMatrix2(int i,int j){
+
+		int value=matrix2[i][j];
+		return value;}
+	
+	public Integer getRowsMatrix2Length(){
+		
+		int length2=matrix2.length;	
+		return length2;	}
+
+	public Integer getColumnsMatrix2Length(){
+
+		int length2=matrix2[0].length;	
+		return length2;	}
+
+
+
+	public static void printMatrix (Integer [][] matrix){
 
 	for(int i = 0; i<matrix.length; i++){
 	
@@ -82,12 +135,14 @@ public Integer [][]matrix2;
 
 	public static void main(String []args) {
 
-		Matrix matrix=new Matrix(3,4,4,3);  //input size first and second matrix
+		Matrix matrix1=new Matrix(3,4);  //input size first  matrix
+		Matrix matrix2=new Matrix(4,3);  //input size second  matrix
+		
 		SumMatrix summatrix=new SumMatrix();
         
-		printMatrix(matrix.matrix1);
-		printMatrix(matrix.matrix2);
-        	printMatrix(summatrix.sum(matrix.matrix1,matrix.matrix2));
+		printMatrix(matrix1.matrix1);
+		printMatrix(matrix2.matrix1);
+        	printMatrix(summatrix.sum(matrix1,matrix2).matrix1);
 		
 	
 	
@@ -95,120 +150,3 @@ public Integer [][]matrix2;
     
 	}//class
 
-class SumMatrix
-		{
-
-protected Integer [][]rezMatrix;
-
-private Integer [][]buffMatrix1;
-private Integer [][]buffMatrix2;
- 	
-	public Integer[][] sum(Integer [][] matrix1,Integer [][] matrix2 ){
-		
-		//init and fill buffMatrix1,buffMatrix2. rezMatrix only init 
-		fillRezBuffMtr(matrix1,matrix2); 
-		
-		for(int i = 0; i<rezMatrix.length; i++){
-	
-		  for(int j = 0; j<rezMatrix[i].length; j++){			
-	    	
-		  rezMatrix[i][j]=buffMatrix1[i][j]+buffMatrix2[i][j]; 
-		
-		  }//for j
-		
-		}//for i
-               	
-		return rezMatrix;	
-		
-		}//sum
-
-
-	private void fillRezBuffMtr(Integer[][] matrix1,Integer[][]matrix2){
-		
-		int rowsRezMatrix=0;
-		int columnsRezMatrix=0;
-		
-		// get size for rezMatrix,buffMatrix1,buffMatrix2
-		if(matrix1.length>=matrix2.length){
-		  rowsRezMatrix=matrix1.length;} 
-		else
-		  {rowsRezMatrix=matrix2.length;}
-
-		if(matrix1[0].length>=matrix2[0].length){
-		  columnsRezMatrix=matrix1[0].length;}    
-		else
-		  {columnsRezMatrix=matrix2[0].length;}
-		
-		//init matrix
-		rezMatrix=new Integer[rowsRezMatrix][columnsRezMatrix];
-
-		buffMatrix1=new Integer[rowsRezMatrix][columnsRezMatrix];
-		buffMatrix2=new Integer[rowsRezMatrix][columnsRezMatrix];
-	
-		//fill buffMatrix1 
-		for (int i=0;i<rowsRezMatrix ;i++ )
-		{
-		  for (int j=0;j<columnsRezMatrix;j++)
-		{
-		    if ((matrix1.length>i)&&(matrix1[0].length>j))
-			buffMatrix1[i][j]=matrix1[i][j];
-		    else
-			buffMatrix1[i][j]=0; 
-		
-		}//for j  
-		
-
-		}//for i
-	  
-		//fill buffMatrix2 
-		for (int i=0;i<rowsRezMatrix ;i++ )
-		{
-		  for (int j=0;j<columnsRezMatrix;j++)
-		{
-		   if ((matrix2.length>i)&&(matrix2[0].length>j))
-			buffMatrix2[i][j]=matrix2[i][j];
-		   else
-			buffMatrix2[i][j]=0;
-
-		 
-		}//for j  
-		
-		}//for i
-	  
-		
-		
-		}//initmatr
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-}//class
