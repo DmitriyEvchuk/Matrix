@@ -1,1 +1,0 @@
-Sum matrix different size.Pay attention to the method "fillRezBuffMtr"!
