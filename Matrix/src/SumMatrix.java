@@ -3,29 +3,33 @@ class SumMatrix
 		{
 
 
-
-private Integer [][]buffMatrix1;
-private Integer [][]buffMatrix2;
 private int rowsRezMatrix=0;
 private int columnsRezMatrix=0;
 		
  	
 	public Matrix sum(Matrix matrix1,Matrix  matrix2 ){
 		
-		//init and fill buffMatrix1,buffMatrix2. rezMatrix only init 
-		initBuffMatr(matrix1,matrix2); 
-		fillBuffMtr(matrix1,buffMatrix1);
-		fillBuffMtr(matrix2,buffMatrix2);
-
+		 
+		findSizeRezMatr(matrix1,matrix2); 
+		
 		Matrix rezMatrix=new Matrix(rowsRezMatrix,columnsRezMatrix);
-			
+		
+		fillMatrNull(rezMatrix);	
+		
 		for(int i = 0; i<rezMatrix.getMatrix().length; i++){
 	
 		  for(int j = 0; j<rezMatrix.getMatrix()[0].length; j++){			
 	    	
-		  rezMatrix.setMatrixVal(i,j,buffMatrix1[i][j]+buffMatrix2[i][j]); //fill razMatrix
-		
-		  }//for j
+		  
+			if((matrix1.getMatrix().length>i)&&(matrix1.getMatrix()[0].length>j))
+		            
+			    rezMatrix.setMatrixVal(i,j,matrix1.getMatrix()[i][j]);
+			
+			if((matrix2.getMatrix().length>i)&&(matrix2.getMatrix()[0].length>j))
+		            
+                rezMatrix.setMatrixVal(i,j,rezMatrix.getMatrix()[i][j]+matrix2.getMatrix()[i][j]);
+			
+		}//for j
 		
 		}//for i
                	
@@ -34,7 +38,7 @@ private int columnsRezMatrix=0;
 		}//sum
 
 
-	private void initBuffMatr(Matrix matrix1,Matrix matrix2){
+	private void findSizeRezMatr(Matrix matrix1,Matrix matrix2){
 		
 		
 		// get size for rezMatrix,buffMatrix1,buffMatrix2
@@ -48,40 +52,22 @@ private int columnsRezMatrix=0;
 		else
 		  {columnsRezMatrix=matrix2.getMatrix()[0].length;}
 		
-		
-
-		buffMatrix1=new Integer[rowsRezMatrix][columnsRezMatrix];
-		buffMatrix2=new Integer[rowsRezMatrix][columnsRezMatrix];
-	
-		
-	  
-		
-		
 		}//initmatr
 
 
-	private  void fillBuffMtr(Matrix matrix,Integer[][] buffMatrix){
+	private void fillMatrNull(Matrix matrix){
 
-	//fill buffMatrix 
-		for (int i=0;i<rowsRezMatrix ;i++ )
-		{
-		  for (int j=0;j<columnsRezMatrix;j++)
-		{
-		    if ((matrix.getMatrix().length>i)&&(matrix.getMatrix()[0].length>j))
-			buffMatrix[i][j]=matrix.getMatrix()[i][j];
-		    else
-			buffMatrix[i][j]=0; 
-		
-		}//for j  
-		
+		for(int i = 0; i<matrix.getMatrix().length; i++){
+	
+		  for(int j = 0; j<matrix.getMatrix()[0].length; j++){			
+	    	
+                 matrix.setMatrixVal(i,j,0);
 
-		}//for i
-	  	
-		
-		}//fillBuffMtr
+		}
+		}
 
 
-
+}
 
 
 
