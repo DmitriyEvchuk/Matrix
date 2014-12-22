@@ -254,7 +254,7 @@ private Integer []matrix;
 		MatrixHelper.minusMatrix(matrix1,matrix2).printMatrixV();
 
 		System.out.println("MULTIPLY");
-		MatrixHelper.multiplyMatrix(matrix1,matrix2);//.printMatrixV();
+		MatrixHelper.multiplyMatrix(matrix1,matrix2).printMatrixV();
 			
 		
 		System.out.println("TRANSPORT MATRIX1");

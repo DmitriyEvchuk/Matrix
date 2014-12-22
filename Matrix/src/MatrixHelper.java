@@ -65,7 +65,7 @@ public class MatrixHelper
 		
 		}//for i
 		
-		multirlymatrix.printMatrixV();
+		
 		
 		return multirlymatrix;
 
