@@ -12,7 +12,7 @@ public class MatrixHelper
 	for(int i = 0; i<summatrix.getRowsLength(); i++){
 	
 		  for(int j = 0; j<summatrix.getColsLength(); j++){			
-	    	
+			//error dont work without my interface need exception handling in interface
 		  summatrix.setMatrixVal(i,j,matrix1.getMatrixVal(i,j)+matrix2.getMatrixVal(i,j));
 			
 		}//for j
@@ -34,7 +34,7 @@ public class MatrixHelper
 	for(int i = 0; i<minusmatrix.getRowsLength(); i++){
 	
 		  for(int j = 0; j<minusmatrix.getColsLength(); j++){			
-	    	
+			//error dont work without my interface need exception handling in interface
 			minusmatrix.setMatrixVal(i,j,matrix1.getMatrixVal(i,j)-matrix2.getMatrixVal(i,j));
 			
 		}//for j
@@ -58,7 +58,7 @@ public class MatrixHelper
 	for(int i = 0; i<multirlymatrix.getRowsLength(); i++){
 	
 		  for(int j = 0; j<multirlymatrix.getColsLength(); j++){			
-	    	
+	    	//error dont work without my interface need exception handling in interface
 			multirlymatrix.setMatrixVal(i,j,matrix1.getMatrixVal(i,j)*matrix2.getMatrixVal(i,j));
 			
 		}//for j 
