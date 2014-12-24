@@ -7,7 +7,7 @@ private Integer []matrix;
 private int rowsSize;
 private int colsSize;
 				
-																															  	    
+												  	    
 	
 	// init matrix
 	public Matrix(int rowsMatrixSize,int columnsMatrixSize ){ 
@@ -149,12 +149,28 @@ private int colsSize;
 		return largeCols;
 		}
         
+			
 
+
+		public Integer getValtoEnd(int row ,int col){
+            
+			int a=0;
+			
+			if (row<getRowsLength())
+			{
+			  if (col<getColsLength())
+			  {
+			    a=getMatrixVal(row,col);
+			  }
+				
+			}//if
+			return a;
+		}
 	
 
 	public static void main(String []args) {
 
-        	Matrix matrix1=new Matrix(2,4);
+        	Matrix matrix1=new Matrix(3,4);
 		Matrix matrix2=new Matrix(6,5);
 		
 		matrix1.setMatrixRandom();
@@ -176,6 +192,7 @@ private int colsSize;
 		
 		System.out.println("TRANSPORT MATRIX1");
 		MatrixHelper.transport(matrix1).printMatrixV();
+	       
 	
 	
 	}//main 
