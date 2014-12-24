@@ -6,16 +6,18 @@ public class Matrix{
 private Integer []matrix;
 private int rowsSize;
 private int colsSize;
-																																				  	    
+				
+																															  	    
 	
 	// init matrix
 	public Matrix(int rowsMatrixSize,int columnsMatrixSize ){ 
         
 		rowsSize=rowsMatrixSize;
-		colsSize=columnsMatrixSize;  
+		colsSize=columnsMatrixSize;
+		int mass=rowsMatrixSize*columnsMatrixSize;  
         	
-		matrix=new Integer[rowsMatrixSize*columnsMatrixSize];
-		for (int i=0;i<rowsMatrixSize*columnsMatrixSize ;i++ )
+		matrix=new Integer[mass];
+		for (int i=0;i<matrix.length ;i++ )
 		{
 		  matrix[i]=0;
 		}
@@ -28,14 +30,14 @@ private int colsSize;
 	public void setMatrixVal(int row,int col,int val){
 
 		
-		matrix[(row*rowsSize)+col]=val;
+		matrix[(row*colsSize)+col]=val;
 
 
 	}//setMatrixVal
 
 	public Integer getMatrixVal(int row,int col){
 
-		int val=matrix[(row*rowsSize)+col];
+		int val=matrix[(row*colsSize)+col];
 		
 		return  val;
 		
@@ -152,8 +154,8 @@ private int colsSize;
 
 	public static void main(String []args) {
 
-        	Matrix matrix1=new Matrix(4,4);
-		Matrix matrix2=new Matrix(7,7);
+        	Matrix matrix1=new Matrix(2,4);
+		Matrix matrix2=new Matrix(6,5);
 		
 		matrix1.setMatrixRandom();
 		matrix1.printMatrixV();
@@ -174,9 +176,7 @@ private int colsSize;
 		
 		System.out.println("TRANSPORT MATRIX1");
 		MatrixHelper.transport(matrix1).printMatrixV();
-	       
-
-		
+	
 	
 	}//main 
     
