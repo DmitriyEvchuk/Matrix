@@ -1,135 +1,50 @@
 
-
 import java.util.*;
 
 
 public class Matrix{
 private Integer []matrix;
-
+private int rowsSize;
+private int colsSize;
 																																				  	    
 	
 	// init matrix
 	public Matrix(int rowsMatrixSize,int columnsMatrixSize ){ 
-          
-        	initMatr(rowsMatrixSize,columnsMatrixSize);
-		
+        
+		rowsSize=rowsMatrixSize;
+		colsSize=columnsMatrixSize;  
+        	
+		matrix=new Integer[rowsMatrixSize*columnsMatrixSize];
+		for (int i=0;i<rowsMatrixSize*columnsMatrixSize ;i++ )
+		{
+		  matrix[i]=0;
+		}
 		
 	
 	}//constructor   
          
-	public void initMatr(int rowsMatrixSize,int columnsMatrixSize){
 	
-		int sizeMass=(rowsMatrixSize*columnsMatrixSize)*3;
-	
-		matrix=new Integer[sizeMass];
-
-		int row=0;
-		int col=0;		
-
-		for(int i=0;i<matrix.length;i++){
-
-		
-		if((i%3)==0)
-		
-		  {matrix[i]=0;}
-                  
-		  i++;
-		
-		if(row<rowsMatrixSize)
-		   
-		   {matrix[i]=row;
-		    }//if
-		
-		if(row>=rowsMatrixSize)
-		   
-		   {row=0;}
-		 
-		    i++;
-		
-		if(col<columnsMatrixSize){
-		    
-		     matrix[i]=col;
-		     col++;}//if
-		
-		if(col>=columnsMatrixSize)
-		      
-		     {col=0;
-		     row++;}
-		
-		
-
-
-	}//for
-	}//initMatr
-
 	
 	public void setMatrixVal(int row,int col,int val){
 
-		int indx=0;
-		for (int i=0;i<matrix.length ;i++ )
-		{
-		 if((i%3)==0)  
-		  { indx=i;
-		    i++;
 		
-		if(matrix[i]==row){
-		   
-		   i++;
-		    
-		if(matrix[i]==col){
-		
-		   matrix[indx]=val;
-		  
-		}//if col
-
-		}//if row
-		   
-	 	}// if i%3
-		
-		}//for	
-	
-
+		matrix[(row*rowsSize)+col]=val;
 
 
 	}//setMatrixVal
 
 	public Integer getMatrixVal(int row,int col){
 
-		int val=0;
-		int indx=0;
-
-		for (int i=0;i<matrix.length ;i++ )
-		{
-		 if((i%3)==0)  
-		  
-		  {indx=i;
-		    i++;
+		int val=matrix[(row*rowsSize)+col];
 		
-		if(matrix[i]==row){
-		   
-		   i++;
-		    
-		if(matrix[i]==col){
-		
-		  val=matrix[indx];
-		  
-		}//if col
-
-		}//if row
-		   
-	 	}//if i%3
-		
-		}//for	
-		
-
-		  return val;
+		return  val;
 		
 		}//getMatrixVal
 	
 	
 	public Integer getRowsLength(){
 		
-		int sizeRows=matrix[matrix.length-2]+1;
+		int sizeRows=rowsSize;
 		
 		return sizeRows;
 	}//getRowsLength
@@ -138,7 +53,7 @@ private Integer []matrix;
 
 	public Integer getColsLength(){
 		
-		int sizeCols=matrix[matrix.length-1]+1;
+		int sizeCols=colsSize;
 		
 		return sizeCols;
 	}//getColsLength
@@ -237,14 +152,14 @@ private Integer []matrix;
 
 	public static void main(String []args) {
 
-        	Matrix matrix1=new Matrix(5,2);
-		Matrix matrix2=new Matrix(3,6);
+        	Matrix matrix1=new Matrix(4,4);
+		Matrix matrix2=new Matrix(7,7);
 		
 		matrix1.setMatrixRandom();
 		matrix1.printMatrixV();
 		
 		matrix2.setMatrixRandom();
-	    matrix2.printMatrixV();
+	        matrix2.printMatrixV();
 		
 		
 		System.out.println("SUM");
