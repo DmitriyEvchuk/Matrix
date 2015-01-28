@@ -106,33 +106,7 @@ private int colsSize;
 
 		}//setMatrixRandom
 
-	//this method compare amount rows matrix and return large
-	public Integer compareRowsMatrix(Matrix matrix){
-	
-		int largeRows;	
-	
-		if(getRowsLength()>=matrix.getRowsLength()){
-		  largeRows=getRowsLength();} 
-		else
-		  {largeRows=matrix.getRowsLength();}
-
-		return largeRows;
-		}
-        
-
-	//this method compare amount cols matrix and return large
-	public Integer compareColsMatrix(Matrix matrix){
-	
-		int largeCols;	
-	
-		if(getColsLength()>=matrix.getColsLength()){
-		  largeCols=getColsLength();} 
-		else
-		  {largeCols=matrix.getColsLength();}
-
-		return largeCols;
-		}
-        
+	        
 			
 
 	public void createMatrix(int sizeRow,int sizeCol){

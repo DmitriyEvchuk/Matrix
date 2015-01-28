@@ -16,7 +16,7 @@ private  Matrix rezmatrix;
 
 	public  Matrix sumMatrix(Matrix matrix1,Matrix matrix2){
 
-	rezmatrix.createMatrix(matrix1.compareRowsMatrix(matrix2),matrix1.compareColsMatrix(matrix2));
+	rezmatrix.createMatrix(compareRowsMatrix(matrix1,matrix2),compareColsMatrix(matrix1,matrix2));
 	
 	
 	 for(int i = 0; i<rezmatrix.getRowsLength(); i++){
@@ -39,7 +39,7 @@ private  Matrix rezmatrix;
 
 	public  Matrix minusMatrix(Matrix matrix1,Matrix matrix2){
 	
-	rezmatrix.createMatrix(matrix1.compareRowsMatrix(matrix2),matrix1.compareColsMatrix(matrix2));
+	rezmatrix.createMatrix(compareRowsMatrix(matrix1,matrix2),compareColsMatrix(matrix1,matrix2));
 
 
 	for(int i = 0; i<rezmatrix.getRowsLength(); i++){
@@ -62,7 +62,7 @@ private  Matrix rezmatrix;
 	public  Matrix multiplyMatrix(Matrix matrix1,Matrix matrix2){
 
 
-		rezmatrix.createMatrix(matrix1.compareRowsMatrix(matrix2),matrix1.compareColsMatrix(matrix2));	
+		rezmatrix.createMatrix(compareRowsMatrix(matrix1,matrix2),compareColsMatrix(matrix1,matrix2));	
 		               
     		
 		for(int i = 0; i<rezmatrix.getRowsLength(); i++){
@@ -118,6 +118,32 @@ private  Matrix rezmatrix;
 		}//getValtoEnd
 
 
+	private Integer compareRowsMatrix(Matrix matrix1,Matrix matrix2){
+		
+		int largeRows;	
+	
+		if(matrix1.getRowsLength()>=matrix2.getRowsLength()){
+		  largeRows=matrix1.getRowsLength();} 
+		else
+		  {largeRows=matrix2.getRowsLength();}
+
+		return largeRows;
+		}
+        
+
+	//this method compare amount cols matrix and return large
+	private Integer compareColsMatrix(Matrix matrix1,Matrix matrix2){
+	
+		int largeCols;	
+	
+		if(matrix1.getColsLength()>=matrix2.getColsLength()){
+		  largeCols=matrix1.getColsLength();} 
+		else
+		  {largeCols=matrix2.getColsLength();}
+
+		return largeCols;
+		}
+        
 
 
 
