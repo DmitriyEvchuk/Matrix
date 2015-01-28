@@ -2,67 +2,74 @@
 
 public class MatrixHelper
 	{
-	public static Matrix sumMatrix(Matrix matrix1,Matrix matrix2){
+private  Matrix rezmatrix;	
+	
 
+	MatrixHelper(Matrix rezmatrix1){
 
-	Matrix summatrix=new Matrix(matrix1.compareRowsMatrix(matrix2),matrix1.compareColsMatrix(matrix2));
-    	
+		rezmatrix=rezmatrix1;
+
 		
+
+	}
+
+
+	public  Matrix sumMatrix(Matrix matrix1,Matrix matrix2){
+
+	rezmatrix.createMatrix(matrix1.compareRowsMatrix(matrix2),matrix1.compareColsMatrix(matrix2));
 	
-		for(int i = 0; i<summatrix.getRowsLength(); i++){
 	
-		  for(int j = 0; j<summatrix.getColsLength(); j++){			
+	 for(int i = 0; i<rezmatrix.getRowsLength(); i++){
+	
+		  for(int j = 0; j<rezmatrix.getColsLength(); j++){			
 	    	
 		  	
-			summatrix.setMatrixVal(i,j,matrix1.getValtoEnd(i,j)+matrix2.getValtoEnd(i,j));
+			rezmatrix.setMatrixVal(i,j,getValtoEnd(matrix1,i,j)+getValtoEnd(matrix2,i,j));
 			
 			
 		}//for j
 		
 		}//for i
 
-		return summatrix;
+		return rezmatrix;
 
 	}//sumMatrix
 
   
 
-	public static Matrix minusMatrix(Matrix matrix1,Matrix matrix2){
-
-
-	Matrix minusmatrix=new Matrix(matrix1.compareRowsMatrix(matrix2),matrix1.compareColsMatrix(matrix2));
-    	
-		
-
-		for(int i = 0; i<minusmatrix.getRowsLength(); i++){
+	public  Matrix minusMatrix(Matrix matrix1,Matrix matrix2){
 	
-		  for(int j = 0; j<minusmatrix.getColsLength(); j++){			
+	rezmatrix.createMatrix(matrix1.compareRowsMatrix(matrix2),matrix1.compareColsMatrix(matrix2));
+
+
+	for(int i = 0; i<rezmatrix.getRowsLength(); i++){
+	
+		  for(int j = 0; j<rezmatrix.getColsLength(); j++){			
 	    	
-		         minusmatrix.setMatrixVal(i,j,matrix1.getValtoEnd(i,j)-matrix2.getValtoEnd(i,j));			
+		         rezmatrix.setMatrixVal(i,j,getValtoEnd(matrix1,i,j)-getValtoEnd(matrix2,i,j));			
 		}//for j
 		
 		}//for i
 
 	
-		return minusmatrix;
+		return rezmatrix;
 
 	}//sumMatrix
 
 
 	
 
-	public static Matrix multiplyMatrix(Matrix matrix1,Matrix matrix2){
+	public  Matrix multiplyMatrix(Matrix matrix1,Matrix matrix2){
 
 
-		Matrix multirlymatrix=new Matrix(matrix1.compareRowsMatrix(matrix2),matrix1.compareColsMatrix(matrix2));
+		rezmatrix.createMatrix(matrix1.compareRowsMatrix(matrix2),matrix1.compareColsMatrix(matrix2));	
+		               
     		
-		
-		
-		for(int i = 0; i<multirlymatrix.getRowsLength(); i++){
+		for(int i = 0; i<rezmatrix.getRowsLength(); i++){
 	
-		  for(int j = 0; j<multirlymatrix.getColsLength(); j++){			
+		  for(int j = 0; j<rezmatrix.getColsLength(); j++){			
 	    	
-			multirlymatrix.setMatrixVal(i,j,matrix1.getValtoEnd(i,j)*matrix2.getValtoEnd(i,j));
+			rezmatrix.setMatrixVal(i,j,getValtoEnd(matrix1,i,j)*getValtoEnd(matrix2,i,j));
 			
 		}//for j 
 		
@@ -70,30 +77,74 @@ public class MatrixHelper
 		
 		
 		
-		return multirlymatrix;
+		return rezmatrix;
 
 	}//sumMatrix
 
 
 
-	public static Matrix transport(Matrix matrix){
+	public  Matrix transport(Matrix matrix){
 
 		//not error if matrix different size
-		
-		Matrix transport=new Matrix(matrix.getColsLength(),matrix.getRowsLength());
-    	
-		for(int i = 0; i<matrix.getRowsLength(); i++){
+		rezmatrix.createMatrix(matrix.getColsLength(),matrix.getRowsLength());	
+	
+              for(int i = 0; i<matrix.getRowsLength(); i++){
 	
 		  for(int j = 0; j<matrix.getColsLength(); j++){
 
-		      transport.setMatrixVal(j,i,matrix.getMatrixVal(i,j));
+		      rezmatrix.setMatrixVal(j,i,matrix.getMatrixVal(i,j));
 
 		}//for j
 		 }//for i
 
-			return transport;
+			return rezmatrix;
 
-		}//sumMatrix
+		}//transport
+
+
+		
+	private Integer getValtoEnd(Matrix matrix,int row ,int col){
+                        int a=0;
+			
+			if (row<matrix.getRowsLength())
+			{
+			  if (col<matrix.getColsLength())
+			  {
+			    a=matrix.getMatrixVal(row,col);
+			  }
+				
+			}//if
+			return a;
+		}//getValtoEnd
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
