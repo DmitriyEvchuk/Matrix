@@ -84,7 +84,7 @@ private String [] words;
 	words=new String[getWordsArrSize(data)];
 	
 	int z=string.available();	
-	int indx=0;
+	Integer indx=new Integer(0);
 	String toArray=new String("");
 	int last=0;
 	Boolean x=new Boolean(false);
