@@ -50,7 +50,7 @@ abstract class Test
 		
 		try{ 
 
- 		FileInputStream in = new FileInputStream("E:\\work\\rfc2822.txt");
+ 		FileInputStream in = new FileInputStream("E:\\work\\111.txt");
        		DataInputStream str=new DataInputStream(in);
 	
 		

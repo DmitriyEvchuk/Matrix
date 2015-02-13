@@ -10,21 +10,21 @@ private String [] words;
 
 	StringBufferInputStream string= new StringBufferInputStream(data);
 
-	int last=0;
+	char last=0;
 	int size=0;
 	int z=string.available();	
 	boolean x=true;
 	for (int i=0;i<z ;i++ )
 	{
 	
-		int val=string.read();
+		char val=(char)string.read();
 
 
 		//if apostrophe
 		if (val==39){//4
 			
 			//if letter	
-			if(((last>=65)&&(last<=90)||(last>=97)&&(last<=122))){//5
+			if(Character.isLetter(last)){//5
 		
 			 x=true;
 		}//5
@@ -36,10 +36,10 @@ private String [] words;
 		if(val!=39){//if3
 		
 		//if letter
-		if (((last>=65)&&(last<=90)||(last>=97)&&(last<=122)))
+		if (Character.isLetter(last))
 		{
 			//if somsing else
-		 	 if((val<65)||((val>90)&&(val<97))||(val>122)){
+		 	 if(!Character.isLetter(val)){
 		
 		  size++;
 		  x=false;
@@ -51,7 +51,7 @@ private String [] words;
 		
 		//exclusion apostrophe
   
-		if((x==true)&&(last==39)&&((val<65)||((val>90)&&(val<97))||(val>122))){//6
+		if((x==true)&&(last==39)&&(!Character.isLetter(val))){//6
 			
 			size++;
 		 	 
@@ -84,21 +84,21 @@ private String [] words;
 	words=new String[getWordsArrSize(data)];
 	
 	int z=string.available();	
-	Integer indx=new Integer(0);
+	int indx=0;
 	String toArray=new String("");
-	int last=0;
+	char last=0;
 	Boolean x=new Boolean(false);
 	
 	for (int i=0;i<z ;i++ )
 	{
 	  
-		int val=string.read();
+		char val=(char)string.read();
 
 		//if apostrophe
 		if (val==39){//4
 			
 			//if letter	
-			if(((last>=65)&&(last<=90)||(last>=97)&&(last<=122))){//5
+			if(Character.isLetter(last)){//5
 		
 			Character ch1=(char)val;
 			toArray=toArray+ch1.toString();
@@ -112,7 +112,7 @@ private String [] words;
 		if(val!=39){//if3
 		
 		//if letter
-		if((val>=65)&&(val<=90)||(val>=97)&&(val<=122)){
+		if(Character.isLetter(val)){
 		
 		
 		Character ch=(char)val;
@@ -124,10 +124,10 @@ private String [] words;
 		}//if0
 		
 		//if letter
-		if (((last>=65)&&(last<=90)||(last>=97)&&(last<=122)))
+		if (Character.isLetter(last))
 		{
 			//if somsing else
-		 	 if((val<65)||((val>90)&&(val<97))||(val>122)){
+		 	 if(!Character.isLetter(val)){
 		
 		  indx++;
 		  toArray="";
@@ -138,7 +138,7 @@ private String [] words;
 		}//if1
 		
 		//exclusion apostrophe
-		if((x==true)&&(last==39)&&((val<65)||((val>90)&&(val<97))||(val>122))){//6
+		if((x==true)&&(last==39)&&(!Character.isLetter(val))){//6
 			
 			indx++;
 		 	 toArray="";
