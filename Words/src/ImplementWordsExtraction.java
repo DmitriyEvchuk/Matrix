@@ -14,6 +14,8 @@ private String [] words;
 	int size=0;
 	int z=string.available();	
 	boolean x=true;
+	final char apostrophe=39;
+	
 	for (int i=0;i<z ;i++ )
 	{
 	
@@ -21,7 +23,7 @@ private String [] words;
 
 
 		//if apostrophe
-		if (val==39){//4
+		if (val==apostrophe){//4
 			
 			//if letter	
 			if(Character.isLetter(last)){//5
@@ -33,7 +35,7 @@ private String [] words;
 
 
 
-		if(val!=39){//if3
+		if(val!=apostrophe){//if3
 		
 		//if letter
 		if (Character.isLetter(last))
@@ -51,7 +53,7 @@ private String [] words;
 		
 		//exclusion apostrophe
   
-		if((x==true)&&(last==39)&&(!Character.isLetter(val))){//6
+		if((x==true)&&(last==apostrophe)&&(!Character.isLetter(val))){//6
 			
 			size++;
 		 	 
@@ -85,9 +87,10 @@ private String [] words;
 	
 	int z=string.available();	
 	int indx=0;
-	String toArray=new String("");
+	String toArray="";
 	char last=0;
-	Boolean x=new Boolean(false);
+	Boolean x=false;
+	final char apostrophe=39;
 	
 	for (int i=0;i<z ;i++ )
 	{
@@ -95,7 +98,7 @@ private String [] words;
 		char val=(char)string.read();
 
 		//if apostrophe
-		if (val==39){//4
+		if (val==apostrophe){//4
 			
 			//if letter	
 			if(Character.isLetter(last)){//5
@@ -109,7 +112,7 @@ private String [] words;
 
 		
 		// if all cases except for the apostrophe
-		if(val!=39){//if3
+		if(val!=apostrophe){//if3
 		
 		//if letter
 		if(Character.isLetter(val)){
@@ -138,7 +141,7 @@ private String [] words;
 		}//if1
 		
 		//exclusion apostrophe
-		if((x==true)&&(last==39)&&(!Character.isLetter(val))){//6
+		if((x==true)&&(last==apostrophe)&&(!Character.isLetter(val))){//6
 			
 			indx++;
 		 	 toArray="";
