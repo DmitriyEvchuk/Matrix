@@ -1,153 +1,108 @@
-import java.io.*;
+
 
 public class ImplementWordsExtraction implements WordsExtractor
 {
-private String [] words;  
 
 
+  private MyArray words=new MyArray();  
 
-	private int getWordsArrSize(String data){
-
-	StringBufferInputStream string= new StringBufferInputStream(data);
-
-	char last=0;
-	int size=0;
-	int z=string.available();	
-	boolean x=true;
-	final char apostrophe=39;
-	
-	for (int i=0;i<z ;i++ )
-	{
-	
-		char val=(char)string.read();
-
-
-		//if apostrophe
-		if (val==apostrophe){//4
-			
-			//if letter	
-			if(Character.isLetter(last)){//5
-		
-			 x=true;
-		}//5
-
-		}//4
-
-
-
-		if(val!=apostrophe){//if3
-		
-		//if letter
-		if (Character.isLetter(last))
-		{
-			//if somsing else
-		 	 if(!Character.isLetter(val)){
-		
-		  size++;
-		  x=false;
-		
-		}//if2
-		
-		}//if1
-
-		
-		//exclusion apostrophe
-  
-		if((x==true)&&(last==apostrophe)&&(!Character.isLetter(val))){//6
-			
-			size++;
-		 	 
-			x=false;
-		
-		}//if6
-		}//if3
-		
-			
-				
-		 
-	last=val;
-	
-
-	}//for
-	
-
-		return size;
-	
-	}//getWordsArrSize
-
-
-	
 
 
 	public void parseString(String data){
 
-	StringBufferInputStream string= new StringBufferInputStream(data);
-
-	words=new String[getWordsArrSize(data)];
 	
-	int z=string.available();	
-	int indx=0;
 	String toArray="";
-	char last=0;
-	Boolean x=false;
-	final char apostrophe=39;
+	String apostrToArray="";
+	char last=' ';
 	
-	for (int i=0;i<z ;i++ )
+	// if apostrophe in buffer string  'apostrToArray' x=true
+	Boolean x=false;
+	
+	final char apostrophe='\'';
+	
+	
+	for (int i=0;i<data.length() ;i++ )
 	{
 	  
-		char val=(char)string.read();
+		Character val=data.charAt(i);
 
 		//if apostrophe
 		if (val==apostrophe){//4
 			
-			//if letter	
+			//if last val is letter inside apostrophe in buffer string	
 			if(Character.isLetter(last)){//5
 		
-			Character ch1=(char)val;
-			toArray=toArray+ch1.toString();
-			 x=true;
+			  apostrToArray="";
+		    	  apostrToArray=apostrToArray+val.toString();
+			  x=true;
+			
+
 		}//5
+
+		// if many apostrophe between words with out space
+		if((!Character.isLetter(last))&&(x==true)){//7
+			
+			words.add(toArray);
+			x=false;
+			toArray="";
+		}//7
+
 
 		}//4
 
 		
 		// if all cases except for the apostrophe
 		if(val!=apostrophe){//if3
+
+		//inside apostrophe                          
+		if((Character.isLetter(val))&&(x==true)){//if6
+
 		
-		//if letter
+		 	toArray=toArray+apostrToArray;
+		  	x=false;
+		
+		
+		}//if6
+
+		//exclusion apostrophe
+		if((!Character.isLetter(val))&&(x==true)){//if6
+		
+		  	words.add(toArray);
+		  	toArray="";
+		  	x=false;
+		
+		
+		}//if6	
+	
+		
+
+		//if letter add in words
 		if(Character.isLetter(val)){
 		
 		
-		Character ch=(char)val;
-		String buf=ch.toString();
-		toArray=toArray+buf;		
-		words[indx]=toArray;
+		
+			String buf=val.toString();
+			toArray=toArray+buf;		
+		
 		
 	
 		}//if0
 		
-		//if letter
+		//if letter 
 		if (Character.isLetter(last))
 		{
-			//if somsing else
+			//if current val is not letter and words
 		 	 if(!Character.isLetter(val)){
 		
-		  indx++;
-		  toArray="";
-		x=false;
+			 words.add(toArray);
+			 toArray="";
+		  
 		
 		}//if2
 		
 		}//if1
 		
-		//exclusion apostrophe
-		if((x==true)&&(last==apostrophe)&&(!Character.isLetter(val))){//6
-			
-			indx++;
-		 	 toArray="";
-			x=false;
 		
-		}//if6
 		}//if3
 		
 		
@@ -164,8 +119,8 @@ private String [] words;
 
 	public int getWordsCount(){
 
-		int count=words.length;
-		return count;
+		
+		return words.length() ;
 	};//getWordsCount
 	
 	
@@ -173,15 +128,14 @@ private String [] words;
 
 	public String[] getWords(){
 
-	
-		String buf[]=new String[getWordsCount()];
-	
-		 for(int i=0;i<getWordsCount();i++)
-	
-		  buf[i]=words[i];
+	String []buf= new String[words.length()];
+		
+		for (int i=0;i<words.length() ;i++ )
+		{
+		 buf[i]=((String)words.getVal(i)); 
+		}
 
-
-	  	return buf;
+		return buf;
 	};//getWords
 	
 			
