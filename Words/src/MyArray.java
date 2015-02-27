@@ -1,83 +1,58 @@
-public class MyArray
-{
-  
-  private Object[] array;
+public class MyArray {
 
-  private Integer realSize=0;
+	private Object[] array;
 
+	private Integer realSize = 0;
 
+	public void add(Object val) {
 
-	
+		final int controlSize = 5;
 
+		if (array == null) {
 
-	public void add(Object val){
+			array = new Object[controlSize];
 
-	final int controlSize=5;	 
+		}// if0
 
-	if(array==null){
-		
-		array=new Object[controlSize];
-	
-	}//if0
-	
+		if (array != null) {
 
+			if (realSize == (array.length)) {
 
-	if(array!=null){
+				Object buf[] = array;
+				array = new Object[array.length + controlSize];
 
-		if(realSize==(array.length)){
-		
-		Object buf[]=array;
-		array=new Object[array.length+controlSize];
-		
-		
-		for (int i=0;i<buf.length ;i++ )
-	    	{
-		
-		array[i]=buf[i];  
-	
-		}//for
+				for (int i = 0; i < buf.length; i++) {
 
-	}//if1
-	}//if0
+					array[i] = buf[i];
 
-	array[realSize]=val;
-        realSize++;
+				}// for
 
+			}// if1
+		}// if0
 
+		array[realSize] = val;
+		realSize++;
 
 	}
 
+	public Integer length() {
 
+		if (realSize == 0) {
 
-	public Integer length(){
-
-		if (realSize==0){
-
-		  array[array.length]="";
-			}
-	
+			array[array.length] = "";
+		}
 
 		return realSize;
 	}
 
+	public Object getVal(Integer indx) {
 
+		if (indx >= realSize) {
 
-	public Object getVal(Integer indx){
-
-		if (indx>=realSize){
-
-		array[array.length]="";
+			array[array.length] = "";
 		}
-	
 
 		return array[indx];
 	}
-
-	
-
-
-
-	
-
 
 };

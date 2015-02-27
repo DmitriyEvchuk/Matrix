@@ -1,126 +1,47 @@
-import java.io.*;
-import java.util.*;
 
-abstract class Test
-	{
-  
+abstract class Test {
 
+	public static void test(FactoryWords factory) {
 
+		WordsExtractor wordsextractor = factory.getWordsExtractor();
+		WordsCounter countWords = factory.getWordsCounter();
+		FileReader file = factory.getFileReader("E:\\work\\rfc2822.txt");
+		WordSave fileSave = factory.getWordSave("forSun.txt");
 
-	
-	public static String fileToString(DataInputStream str ){
+		file.readFile();
 
-		
-		String filestr="";
-		String s="";	
+		wordsextractor.parseString(file.getFileString());
 
-		try{
-		
-		while ((s = str.readLine()) != null) {
-                
-			filestr=filestr+s;
-			filestr=filestr+" ";
-		
-		}
-		
-		}
-		
-		catch(IOException e)
-	        {}
-   		
-		
-			return filestr;		
-		
-	}//fileToString
+		countWords.wordsCounter(wordsextractor.getWords());
 
+		fileSave.save(countWords);
 
-	public static void printWords(WordsExtractor wordsextractor){
-		
-		for (int i=0;i<wordsextractor.getWordsCount() ;i++ )
-		System.out.println(wordsextractor.getWords()[i]);
+	}// test
 
+	public static void main(String[] args) {
 
-	}//print
+		FactoryWords factory = new FactoryWords() {
 
+			public FileReader getFileReader(String fileName) {
+				return new FileReaderImplement(fileName);
+			}
 
+			public WordSave getWordSave(String fileName) {
+				return new WordSaveImplement(fileName);
+			}
 
+			public WordsExtractor getWordsExtractor() {
+				return new ImplementWordsExtraction();
+			}
 
-	public static void test(WordsExtractor wordsextractor ){
-		
-		try{ 
+			public WordsCounter getWordsCounter() {
+				return new WordsCounterImplement();
+			};
 
- 		FileInputStream in = new FileInputStream("E:\\work\\111.txt");
-       		DataInputStream str=new DataInputStream(in);
-	
-		
-		String filestr=fileToString(str);
-		
-		wordsextractor.parseString(filestr);
-		
+		};
 
-		}//try
+		test(factory);
 
-		catch(IOException e)
-	        {}
-   		
-		printWords(wordsextractor);
+	}// main
 
-		
-
-
-
-		}//test
-
-
-
-
-	public static void main(String[] args){
-
-
-	ImplementWordsExtraction words=new ImplementWordsExtraction();
-	test(words);
-
-		
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-}//main
-
-
-
-
-
-
-
-
-
-}//class;
+}// class;
