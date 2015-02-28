@@ -4,7 +4,7 @@ interface FactoryWords {
 
 	WordsCounter getWordsCounter();
 
-	FileReader getFileReader(String fileName);
+	FileReader getFileReader();
 
-	WordSave getWordSave(String fileName);
+	WordSave getWordSave();
 }

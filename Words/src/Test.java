@@ -5,8 +5,8 @@ abstract class Test {
 
 		WordsExtractor wordsextractor = factory.getWordsExtractor();
 		WordsCounter countWords = factory.getWordsCounter();
-		FileReader file = factory.getFileReader("E:\\work\\rfc2822.txt");
-		WordSave fileSave = factory.getWordSave("forSun.txt");
+		FileReader file = factory.getFileReader();
+		WordSave fileSave = factory.getWordSave();
 
 		file.readFile();
 
@@ -22,12 +22,12 @@ abstract class Test {
 
 		FactoryWords factory = new FactoryWords() {
 
-			public FileReader getFileReader(String fileName) {
-				return new FileReaderImplement(fileName);
+			public FileReader getFileReader() {
+				return new FileReaderImplement("E:\\work\\rfc2822.txt");
 			}
 
-			public WordSave getWordSave(String fileName) {
-				return new WordSaveImplement(fileName);
+			public WordSave getWordSave() {
+				return new WordSaveImplement("forSun.txt");
 			}
 
 			public WordsExtractor getWordsExtractor() {
