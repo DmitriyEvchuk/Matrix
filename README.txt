@@ -1,1 +1,1 @@
-WATCH folder test ANA project WORDPACK save folder test in root disk C:
+WATCH folder test AND project WORDPACK save folder test in root disk C:
