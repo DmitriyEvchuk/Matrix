@@ -1,1 +1,0 @@
-WATCH folder test AND project WORDPACK save folder test in root disk C:
